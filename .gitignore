@@ -3,6 +3,15 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Data files
+data/
+*.csv
+!example_submission.csv
+
+# Model files
+models/
+*.pkl
+
 # C extensions
 *.so
 
