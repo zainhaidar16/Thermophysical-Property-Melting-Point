@@ -24,25 +24,18 @@ pip install -r requirements.txt
 
 ## Quick Start
 
-### Option 1: Try with Sample Data
+### Prepare Your Data
 
-Generate sample data and run the complete pipeline:
+1. **Create data directory**:
+   ```bash
+   mkdir -p data
+   ```
 
-```bash
-# Step 1: Generate sample data
-python create_sample_data.py
-
-# Step 2: Train all models and generate predictions
-python main.py --train data/train.csv --test data/test.csv --ensemble --predict
-```
-
-### Option 2: Use Your Own Data
-
-1. **Prepare your data files**:
+2. **Prepare your data files**:
    - Place your training data in `data/train.csv`
    - Place your test data in `data/test.csv`
 
-2. **Data format requirements**:
+3. **Data format requirements**:
    
    Training data (`train.csv`):
    ```
@@ -170,9 +163,7 @@ ALL TESTS PASSED ✓
 
 **Error**: `Training data not found at data/train.csv`
 
-**Solution**: Either:
-- Run `python create_sample_data.py` to generate sample data, or
-- Place your own data files in the `data/` directory
+**Solution**: Place your own data files in the `data/` directory following the format specified in the "Prepare Your Data" section.
 
 ### Import Errors
 

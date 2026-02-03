@@ -12,9 +12,9 @@ This project implements multiple machine learning models to predict melting poin
 
 ```
 .
-├── data/                      # Data directory
-│   ├── train.csv             # Training data with melting points
-│   └── test.csv              # Test data for predictions
+├── data/                      # Data directory (create and add your data here)
+│   ├── train.csv             # Training data with melting points (not included)
+│   └── test.csv              # Test data for predictions (not included)
 ├── src/                      # Source code
 │   ├── __init__.py          # Package initialization
 │   ├── data_loader.py       # Data loading and preprocessing
@@ -23,7 +23,6 @@ This project implements multiple machine learning models to predict melting poin
 ├── models/                   # Saved trained models
 ├── notebooks/                # Jupyter notebooks for exploration
 ├── main.py                  # Main script for training
-├── create_sample_data.py   # Script to generate sample data
 ├── requirements.txt         # Python dependencies
 └── README.md               # This file
 ```
@@ -54,17 +53,15 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Quick Start with Sample Data
+### Prepare Your Data
 
-Generate sample data and train models:
+Before using the pipeline, prepare your data files:
 
-```bash
-# Create sample data
-python create_sample_data.py
+1. Create a `data/` directory in the project root
+2. Place your training data in `data/train.csv`
+3. Place your test data in `data/test.csv`
 
-# Train all models and generate predictions
-python main.py --train data/train.csv --test data/test.csv --ensemble --predict
-```
+Ensure your data follows the format described in the "Data Format" section above.
 
 ### Training Models
 
