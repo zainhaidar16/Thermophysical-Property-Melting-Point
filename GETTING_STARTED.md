@@ -53,7 +53,7 @@ pip install -r requirements.txt
    ...
    ```
 
-3. **Run the pipeline**:
+4. **Run the pipeline**:
    ```bash
    python main.py --train data/train.csv --test data/test.csv --ensemble --predict
    ```
