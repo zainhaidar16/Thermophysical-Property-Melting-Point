@@ -36,7 +36,7 @@ class MeltingPointDataLoader:
     
     def preprocess_features(self, 
                            df: pd.DataFrame, 
-                           target_col: str = 'melting_point',
+                           target_col: str = 'Tm',
                            id_col: str = 'id',
                            fit: bool = True) -> Tuple[np.ndarray, Optional[np.ndarray], pd.Index]:
         """

@@ -244,7 +244,7 @@ class TrainingPipeline:
         # Create submission dataframe
         submission = pd.DataFrame({
             'id': test_ids,
-            'melting_point': predictions
+            'Tm': predictions
         })
         
         # Save submission
