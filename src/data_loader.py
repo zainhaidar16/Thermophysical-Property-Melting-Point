@@ -54,11 +54,32 @@ class MeltingPointDataLoader:
         # Separate IDs
         ids = df[id_col] if id_col in df.columns else df.index
         
+        # Check for alternative target column names (Tm is commonly used for melting point)
+        original_target_col = target_col
+        if target_col not in df.columns and 'Tm' in df.columns:
+            target_col = 'Tm'
+            if fit:  # Only log during training
+                print(f"Note: Using '{target_col}' column as target ('{original_target_col}' not found)")
+        
         # Separate target if exists
         y = df[target_col].values if target_col in df.columns else None
         
-        # Get feature columns (exclude id and target)
-        feature_cols = [col for col in df.columns if col not in [id_col, target_col]]
+        # Get feature columns (exclude id, target, and non-numeric columns)
+        # Exclude ID and target columns
+        exclude_cols = {id_col, target_col}
+        
+        # Also exclude any non-numeric columns (like SMILES, smiles, etc.)
+        for col in df.columns:
+            if col not in exclude_cols:
+                # Check if column is numeric (int, float) or can be converted to numeric
+                try:
+                    pd.to_numeric(df[col].iloc[0])
+                except (ValueError, TypeError):
+                    exclude_cols.add(col)
+                    if fit:  # Only log during training
+                        print(f"Note: Excluding non-numeric column '{col}' from features")
+        
+        feature_cols = [col for col in df.columns if col not in exclude_cols]
         X = df[feature_cols].values
         
         # Handle missing values
