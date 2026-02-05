@@ -54,11 +54,16 @@ class MeltingPointDataLoader:
         # Separate IDs
         ids = df[id_col] if id_col in df.columns else df.index
         
+        # Check for alternative target column names (Tm is commonly used for melting point)
+        if target_col not in df.columns and 'Tm' in df.columns:
+            target_col = 'Tm'
+        
         # Separate target if exists
         y = df[target_col].values if target_col in df.columns else None
         
-        # Get feature columns (exclude id and target)
-        feature_cols = [col for col in df.columns if col not in [id_col, target_col]]
+        # Get feature columns (exclude id, target, and non-numeric columns like SMILES)
+        exclude_cols = [id_col, target_col, 'SMILES', 'smiles']
+        feature_cols = [col for col in df.columns if col not in exclude_cols]
         X = df[feature_cols].values
         
         # Handle missing values
