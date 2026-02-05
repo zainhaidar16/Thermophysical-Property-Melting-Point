@@ -15,14 +15,14 @@ def main():
     parser.add_argument(
         '--train',
         type=str,
-        default='data/train.csv',
+        default='train.csv',
         help='Path to training data CSV'
     )
     
     parser.add_argument(
         '--test',
         type=str,
-        default='data/test.csv',
+        default='test.csv',
         help='Path to test data CSV'
     )
     
